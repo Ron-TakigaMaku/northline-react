@@ -5,7 +5,7 @@ function Home() {
 		<>
 			<Header />
 
-			<main>Home Page</main>
+			{/* <main>Home Page</main> */}
 		</>
 	)
 }

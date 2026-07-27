@@ -1,3 +1,5 @@
+import navigation from '../data/navigation'
+
 function Header() {
 	return (
 		<header className='header'>
@@ -6,26 +8,13 @@ function Header() {
 					<span className='header__logo'>NORTHLINE</span>
 					<nav className='header__nav'>
 						<ul className='header__list'>
-							<li className='header__item'>
-								<a href='#' className='header__link'>
-									Fleece
-								</a>
-							</li>
-							<li className='header__item'>
-								<a href='#' className='header__link'>
-									Bottoms
-								</a>
-							</li>
-							<li className='header__item'>
-								<a href='#' className='header__link'>
-									Accessories
-								</a>
-							</li>
-							<li className='header__item'>
-								<a href='#' className='header__link'>
-									Footwear
-								</a>
-							</li>
+							{navigation.map(item => (
+								<li className='header__item' key={item.path}>
+									<a href={item.path} className='header__link'>
+										{item.title}
+									</a>
+								</li>
+							))}
 						</ul>
 					</nav>
 				</div>
