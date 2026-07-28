@@ -4,7 +4,6 @@ function Accessories() {
 	return (
 		<>
 			<Header />
-			<h1>Accessories</h1>
 		</>
 	)
 }

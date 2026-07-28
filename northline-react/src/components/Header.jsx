@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import navigation from '../data/navigation'
 
 function Header() {
@@ -10,9 +11,9 @@ function Header() {
 						<ul className='header__list'>
 							{navigation.map(item => (
 								<li className='header__item' key={item.path}>
-									<a href={item.path} className='header__link'>
+									<Link to={item.path} className='header__link'>
 										{item.title}
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>

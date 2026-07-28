@@ -4,7 +4,6 @@ function Fleece() {
 	return (
 		<>
 			<Header />
-			<h1>Fleece</h1>
 		</>
 	)
 }

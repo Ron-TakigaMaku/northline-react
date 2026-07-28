@@ -4,7 +4,6 @@ function Footwear() {
 	return (
 		<>
 			<Header />
-			<h1>Footwear</h1>
 		</>
 	)
 }

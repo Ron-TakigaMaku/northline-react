@@ -4,7 +4,6 @@ function Bottoms() {
 	return (
 		<>
 			<Header />
-			<h1>Bottoms</h1>
 		</>
 	)
 }
