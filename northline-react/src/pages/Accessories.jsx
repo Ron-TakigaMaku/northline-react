@@ -1,11 +1,5 @@
-import Header from '../components/Header'
-
 function Accessories() {
-	return (
-		<>
-			<Header />
-		</>
-	)
+	return <></>
 }
 
 export default Accessories

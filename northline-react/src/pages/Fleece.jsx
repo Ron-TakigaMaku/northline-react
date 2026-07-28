@@ -1,11 +1,5 @@
-import Header from '../components/Header'
-
 function Fleece() {
-	return (
-		<>
-			<Header />
-		</>
-	)
+	return <></>
 }
 
 export default Fleece

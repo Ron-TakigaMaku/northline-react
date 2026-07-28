@@ -1,11 +1,5 @@
-import Header from '../components/Header'
-
 function Footwear() {
-	return (
-		<>
-			<Header />
-		</>
-	)
+	return <></>
 }
 
 export default Footwear

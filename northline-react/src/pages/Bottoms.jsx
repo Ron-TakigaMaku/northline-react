@@ -1,11 +1,5 @@
-import Header from '../components/Header'
-
 function Bottoms() {
-	return (
-		<>
-			<Header />
-		</>
-	)
+	return <></>
 }
 
 export default Bottoms
