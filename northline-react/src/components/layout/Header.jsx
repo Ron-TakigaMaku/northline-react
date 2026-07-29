@@ -1,4 +1,4 @@
-import navigation from '@/data/layout/navigation'
+import navigation from '@/data/layout/navigation-data'
 import { Link } from 'react-router-dom'
 
 function Header() {

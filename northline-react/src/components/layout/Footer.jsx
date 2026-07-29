@@ -1,4 +1,4 @@
-import footer from '@/data/layout/footer'
+import footer from '@/data/layout/footer-data'
 import { Link } from 'react-router-dom'
 
 function Footer() {
