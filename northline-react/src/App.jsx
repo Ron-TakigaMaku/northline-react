@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import Accessories from '@/pages/Accessories'
 import Bottoms from '@/pages/Bottoms'
@@ -17,6 +18,7 @@ function App() {
 				<Route path='/accessories' element={<Accessories />} />
 				<Route path='/footwear' element={<Footwear />} />
 			</Routes>
+			<Footer />
 		</>
 	)
 }

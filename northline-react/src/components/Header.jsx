@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import navigation from '@/data/navigation'
+import { Link } from 'react-router-dom'
 
 function Header() {
 	return (
