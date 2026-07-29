@@ -1,10 +1,10 @@
+import Header from '@/components/Header'
+import Accessories from '@/pages/Accessories'
+import Bottoms from '@/pages/Bottoms'
+import Fleece from '@/pages/Fleece'
+import Footwear from '@/pages/Footwear'
+import Home from '@/pages/home'
 import { Route, Routes } from 'react-router-dom'
-import Header from './components/Header'
-import Accessories from './pages/Accessories'
-import Bottoms from './pages/Bottoms'
-import Fleece from './pages/Fleece'
-import Footwear from './pages/Footwear'
-import Home from './pages/home'
 
 function App() {
 	return (

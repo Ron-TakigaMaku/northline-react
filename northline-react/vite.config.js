@@ -6,10 +6,8 @@ import { defineConfig } from 'vite'
 export default defineConfig({
 	plugins: [react()],
 	resolve: {
-		resolve: {
-			alias: {
-				'@': fileURLToPath(new URL('./src', import.meta.url)),
-			},
+		alias: {
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
 		},
 	},
 })
