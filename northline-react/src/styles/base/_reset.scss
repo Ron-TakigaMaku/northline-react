@@ -1,11 +1,15 @@
-* {
+// Стандартные стили браузера
+
+*,
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
 ul {
-	list-style: none;
+	list-style-type: none;
 }
 
 a {
@@ -16,4 +20,22 @@ a {
 img {
 	display: block;
 	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+}
+
+@keyframes fadeDown {
+	from {
+		transform: translateY(-20px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
