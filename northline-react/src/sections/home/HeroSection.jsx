@@ -1,13 +1,15 @@
 import heroData from '@/data/home/hero-data'
 
 function HeroSection() {
+	const hero = heroData[0]
+
 	return (
 		<section className='hero__content'>
 			<div className='hero__img'>
-				<img src='{heroData.img}' alt='{heroData.title}' />
+				<img src={hero.img} alt={hero.title} />
 			</div>
-			<h1 className='hero__title'>{heroData.title}</h1>
-			<p className='hero__text'>{heroData.description}</p>
+			<h1 className='hero__title'>{hero.title}</h1>
+			<p className='hero__text'>{hero.description}</p>
 			<section className='hero-actions'>
 				<a href='#story' className='btn'>
 					Discover Our Story ↓
