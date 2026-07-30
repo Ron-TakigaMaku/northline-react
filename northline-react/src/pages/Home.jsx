@@ -1,5 +1,11 @@
+import HeroSection from '@/sections/home/HeroSection'
+
 function Home() {
-	return <></>
+	return (
+		<>
+			<HeroSection />
+		</>
+	)
 }
 
 export default Home
