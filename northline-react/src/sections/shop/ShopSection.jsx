@@ -1,31 +1,44 @@
-// src/sections/shop/ShopSection.jsx
 import ProductCard from '@/components/shop/ProductCard'
 import ProductModal from '@/components/shop/ProductModal'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 function ShopSection({ products }) {
 	const [idx, setIdx] = useState(0)
 	const [activeProduct, setActiveProduct] = useState(null)
+
 	const timerRef = useRef(null)
+
 	const n = products.length
 
-	const go = i => setIdx((i + n) % n)
-
-	const startAutoScroll = () => {
+	const startAutoScroll = useCallback(() => {
 		clearInterval(timerRef.current)
+
 		timerRef.current = setInterval(() => {
 			setIdx(prev => (prev + 1) % n)
 		}, 3000)
-	}
+	}, [n])
 
 	useEffect(() => {
 		startAutoScroll()
-		return () => clearInterval(timerRef.current)
-	}, [n])
+
+		return () => {
+			clearInterval(timerRef.current)
+		}
+	}, [startAutoScroll])
 
 	const handleNav = direction => {
 		clearInterval(timerRef.current)
-		go(idx + direction)
+
+		setIdx(prev => (prev + direction + n) % n)
+
+		startAutoScroll()
+	}
+
+	const handleDotClick = index => {
+		clearInterval(timerRef.current)
+
+		setIdx(index)
+
 		startAutoScroll()
 	}
 
@@ -34,7 +47,9 @@ function ShopSection({ products }) {
 			<section className='shop__wrapper'>
 				<div
 					className='shop__track'
-					style={{ transform: `translateX(-${idx * 100}%)` }}
+					style={{
+						transform: `translateX(-${idx * 100}%)`,
+					}}
 				>
 					{products.map(product => (
 						<ProductCard
@@ -53,17 +68,15 @@ function ShopSection({ products }) {
 							key={i}
 							className={`shop__dot${i === idx ? ' active' : ''}`}
 							aria-label={`Слайд ${i + 1}`}
-							onClick={() => {
-								clearInterval(timerRef.current)
-								go(i)
-								startAutoScroll()
-							}}
+							onClick={() => handleDotClick(i)}
 						/>
 					))}
 				</section>
+
 				<div className='shop__counter'>
 					{idx + 1} / {n}
 				</div>
+
 				<section className='shop__btns'>
 					<button
 						className='shop__prev'
@@ -72,6 +85,7 @@ function ShopSection({ products }) {
 					>
 						←
 					</button>
+
 					<button
 						className='shop__next'
 						aria-label='Вперёд'
@@ -83,6 +97,7 @@ function ShopSection({ products }) {
 			</section>
 
 			<ProductModal
+				key={activeProduct?.id}
 				product={activeProduct}
 				onClose={() => setActiveProduct(null)}
 			/>
