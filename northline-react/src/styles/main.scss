@@ -9,3 +9,9 @@
 @use './home/about';
 @use './home/collection';
 @use './home/values';
+
+@use './shop/hero' as shop-hero;
+@use './shop/shop';
+@use './shop/product-card';
+@use './shop/modal';
+@use './shop/featured' as shop-featured;
