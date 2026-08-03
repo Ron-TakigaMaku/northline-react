@@ -2,6 +2,16 @@
 
 @use './variables' as *;
 
+:root {
+	--main-black: #{$main-black};
+	--main-white: #{$main-white};
+	--main-gray: #{$main-gray};
+	--secondary-color: #{$secondary-color};
+	--orange: #{$orange};
+	--primary: #{$secondary-color};
+	--container: #{$container};
+}
+
 body {
 	overflow-x: hidden;
 	color: $main-black;

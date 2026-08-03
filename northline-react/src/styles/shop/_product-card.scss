@@ -35,12 +35,12 @@
 	&__link {
 		display: inline-block;
 		padding: 14px 36px;
-		color: #fff;
+		color: $main-white;
 		font-size: 12px;
 		font-weight: 700;
 		letter-spacing: 1.5px;
 		text-decoration: none;
-		background: var(--main-black);
+		background: $main-black;
 		border: none;
 		border-radius: 12px;
 		transition:
@@ -49,7 +49,7 @@
 		cursor: pointer;
 
 		&:hover {
-			background: var(--secondary-color);
+			background: $secondary-color;
 			transform: translateY(-1px);
 		}
 	}

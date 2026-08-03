@@ -1,5 +1,5 @@
 import sectionImg2 from '@/assets/image/footwear/collection/1.png'
-import sectionImg from '@/assets/image/index/collection/section-img.png'
+import sectionImg from '@/assets/image/index/colection/section-img.png'
 
 export const collectionData = [
 	{

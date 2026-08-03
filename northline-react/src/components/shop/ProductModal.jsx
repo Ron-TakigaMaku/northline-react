@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 function ProductModal({ product, onClose }) {
 	const [slideIdx, setSlideIdx] = useState(0)
@@ -29,7 +30,7 @@ function ProductModal({ product, onClose }) {
 	const n = images.length
 	const goTo = i => setSlideIdx((i + n) % n)
 
-	return (
+	return createPortal(
 		<div className='modal modal--open'>
 			<div className='modal__overlay' onClick={onClose} />
 			<div className='modal__window'>
@@ -80,7 +81,8 @@ function ProductModal({ product, onClose }) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>,
+		document.body,
 	)
 }
 
