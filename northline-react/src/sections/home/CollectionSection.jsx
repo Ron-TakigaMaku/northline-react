@@ -1,8 +1,8 @@
 // src/sections/home/CollectionSection.jsx
 import { collectionData } from '@/data/home/collection-data'
 
-function CollectionSection({ id }) {
-	const item = collectionData.find(entry => entry.id === id)
+function CollectionSection() {
+	const item = collectionData[0]
 
 	if (!item) return null
 

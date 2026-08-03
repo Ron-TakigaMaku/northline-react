@@ -9,7 +9,7 @@ function Home() {
 		<>
 			<HeroSection />
 			<ShopSection products={products} />
-			<CollectionSection id={1} />
+			<CollectionSection />
 		</>
 	)
 }
