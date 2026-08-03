@@ -1,3 +1,5 @@
+// src/pages/Home.jsx
+import products from '@/data/shop/products'
 import AboutSection from '@/sections/home/AboutSection'
 import HeroSection from '@/sections/home/HeroSection'
 import ShopSection from '@/sections/shop/ShopSection'
@@ -7,7 +9,7 @@ function Home() {
 		<>
 			<HeroSection />
 			<AboutSection />
-			<ShopSection />
+			<ShopSection products={products} />
 		</>
 	)
 }

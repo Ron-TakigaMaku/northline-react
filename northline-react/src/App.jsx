@@ -4,7 +4,7 @@ import Accessories from '@/pages/Accessories'
 import Bottoms from '@/pages/Bottoms'
 import Fleece from '@/pages/Fleece'
 import Footwear from '@/pages/Footwear'
-import Home from '@/pages/home'
+import Home from '@/pages/Home'
 import Shop from '@/pages/Shop'
 import { Route, Routes } from 'react-router-dom'
 
