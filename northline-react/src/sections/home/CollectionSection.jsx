@@ -2,26 +2,20 @@
 import { collectionData } from '@/data/home/collection-data'
 
 function CollectionSection() {
-	const item = collectionData[0]
-
-	if (!item) return null
+	const collection = collectionData[0]
 
 	return (
-		<section className='collection reveal'>
-			{/* <section className='collection__list'> */}
-			<section className='collection__content'>
-				<div className='collection__img'>
-					<img src={item.img} alt={item.title} />
-				</div>
-				<h1 className='collection__title'>{item.title}</h1>
-				<p className='collection__text'>{item.description}</p>
-				<section className='collection__actions'>
-					<a href='#story' className='btn'>
-						Details
-					</a>
-				</section>
+		<section className='collection__content'>
+			<div className='collection__img'>
+				<img src={collection.img} alt={collection.title} />
+			</div>
+			<h1 className='collection__title'>{collection.title}</h1>
+			<p className='collection__text'>{collection.description}</p>
+			<section className='collection__actions'>
+				<a href='#story' className='btn'>
+					Details
+				</a>
 			</section>
-			{/* </section> */}
 		</section>
 	)
 }
