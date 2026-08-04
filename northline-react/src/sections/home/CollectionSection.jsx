@@ -12,7 +12,7 @@ function CollectionSection() {
 			<h1 className='collection__title'>{collection.title}</h1>
 			<p className='collection__text'>{collection.description}</p>
 			<section className='collection__actions'>
-				<a href='#story' className='btn'>
+				<a href='#' className='btn'>
 					Details
 				</a>
 			</section>

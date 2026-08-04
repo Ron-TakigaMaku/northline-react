@@ -20,7 +20,7 @@ function HeroSection() {
 				<h1 className='hero__title'>{hero.title}</h1>
 				<p className='hero__text'>{hero.description}</p>
 				<section className='hero-actions'>
-					<a href='#story' className='btn'>
+					<a href='#' className='btn' onClick={handleScroll}>
 						Discover Our Story ↓
 					</a>
 				</section>

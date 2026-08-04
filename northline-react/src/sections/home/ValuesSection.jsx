@@ -2,7 +2,7 @@ import { valuesData } from '@/data/home/values-data.js'
 
 function ValuesSection() {
 	return (
-		<section className='values'>
+		<section className='values reveal'>
 			<div className='values-grid'>
 				<ul className='values-list'>
 					{valuesData.map(value => (
