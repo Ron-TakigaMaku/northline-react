@@ -2,13 +2,17 @@ import { useEffect } from 'react'
 
 export default function useReveal() {
 	useEffect(() => {
+		const elements = document.querySelectorAll('.reveal')
+
 		const observer = new IntersectionObserver(
 			entries => {
-				entries.forEach(entry => {
+				entries.forEach((entry, index) => {
 					if (entry.isIntersecting) {
-						entry.target.classList.add('in')
-					} else {
-						entry.target.classList.remove('in') // если нужна повторная анимация
+						const el = entry.target
+						setTimeout(() => {
+							el.classList.add('in')
+						}, index * 120)
+						observer.unobserve(el)
 					}
 				})
 			},
@@ -16,8 +20,6 @@ export default function useReveal() {
 				threshold: 0.15,
 			},
 		)
-
-		const elements = document.querySelectorAll('.reveal')
 
 		elements.forEach(el => observer.observe(el))
 
