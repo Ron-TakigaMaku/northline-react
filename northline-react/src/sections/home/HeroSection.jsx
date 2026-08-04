@@ -3,9 +3,16 @@ import heroData from '@/data/home/hero-data'
 function HeroSection() {
 	const hero = heroData[0]
 
+	const handleScroll = e => {
+		e.preventDefault()
+		const target = document.getElementById('story')
+		if (target) {
+			target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		}
+	}
+
 	return (
-		<section className='hero'>
-			{/* <section className='hero reveal'> */}
+		<section className='hero reveal'>
 			<div className='hero__content'>
 				<div className='hero__img'>
 					<img src={hero.img} alt={hero.title} />
@@ -18,7 +25,6 @@ function HeroSection() {
 					</a>
 				</section>
 			</div>
-			{/* </section> */}
 		</section>
 	)
 }

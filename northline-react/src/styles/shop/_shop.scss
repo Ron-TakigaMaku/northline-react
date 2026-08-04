@@ -1,7 +1,7 @@
 @use '../base/variables' as *;
 
 .shop {
-	animation: fadeDown 0.7s 0.4s ease both;
+	// animation: fadeDown 0.7s 0.4s ease both;
 
 	&__wrapper {
 		overflow: hidden;
@@ -34,7 +34,7 @@
 		cursor: pointer;
 
 		&.active {
-			background: #000;
+			background: $main-black;
 		}
 	}
 
@@ -59,7 +59,7 @@
 		cursor: pointer;
 
 		&:hover {
-			background: #f5f5f5;
+			background: $main-white;
 		}
 	}
 }

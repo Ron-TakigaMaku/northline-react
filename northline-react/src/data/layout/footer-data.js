@@ -1,8 +1,8 @@
 const footer = [
-	{ title: 'Linkedin', path: '/linkedin' },
-	{ title: 'Twitter', path: '/twitter' },
-	{ title: 'Github', path: '/github' },
-	{ title: 'Contacts', path: '/contacts' },
+	{ title: 'Linkedin', path: '#' },
+	{ title: 'Twitter', path: '#' },
+	{ title: 'Github', path: 'https://github.com/Ron-TakigaMaku' },
+	{ title: 'Contacts', path: '#' },
 ]
 
 export default footer

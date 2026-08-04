@@ -43,7 +43,7 @@ function ShopSection({ products }) {
 	}
 
 	return (
-		<section className='shop'>
+		<section id='story' className='shop'>
 			<div className='container'>
 				<section className='shop__wrapper'>
 					<div

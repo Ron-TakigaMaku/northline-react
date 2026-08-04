@@ -11,6 +11,10 @@
 	--container: #{$container};
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	overflow-x: hidden;
 	color: $main-black;
@@ -41,22 +45,22 @@ body {
 	}
 }
 
-// .btn {
-// 	display: inline-block;
-// 	padding: 14px 36px;
-// 	color: #fff;
-// 	font-size: 12px;
-// 	font-weight: 700;
-// 	letter-spacing: 1.5px;
-// 	text-decoration: none;
-// 	border: none;
-// 	border-radius: 2px;
-// 	animation: fadeDown 0.6s ease both;
-// 	transition:
-// 		background 0.25s,
-// 		transform 0.15s;
-// 	cursor: pointer;
-// }
+.btn {
+	display: inline-block;
+	padding: 14px 36px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-decoration: none;
+	border: none;
+	border-radius: 2px;
+	animation: fadeDown 0.6s ease both;
+	transition:
+		background 0.25s,
+		transform 0.15s;
+	cursor: pointer;
+}
 .btn {
 	display: inline-block;
 	padding: 14px 36px;
