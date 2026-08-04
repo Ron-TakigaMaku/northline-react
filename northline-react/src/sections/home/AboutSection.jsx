@@ -1,6 +1,10 @@
 import aboutData from '@/data/home/about-data'
 
 function AboutSection() {
+	const handleClick = about => {
+		console.log('Clicked:', about.title)
+	}
+
 	return (
 		<section className='about-section'>
 			{aboutData.map(about => (
@@ -13,7 +17,11 @@ function AboutSection() {
 						<h3 className='product-card__title'>{about.title}</h3>
 						<p className='product-card__price'>{about.price}</p>
 						<p className='product-card__desc'>{about.description}</p>
-						<button className='product-card__link' data-id={about.id}>
+						<button
+							className='product-card__link'
+							data-id={about.id}
+							onClick={() => handleClick(about)}
+						>
 							{about.linkText}
 						</button>
 					</div>

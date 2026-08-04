@@ -6,6 +6,7 @@ function CollectionSection() {
 
 	return (
 		<section className='collection__content'>
+			{/* <section className='collection reveal'> */}
 			<div className='collection__img'>
 				<img src={collection.img} alt={collection.title} />
 			</div>
@@ -16,6 +17,7 @@ function CollectionSection() {
 					Details
 				</a>
 			</section>
+			{/* </section> */}
 		</section>
 	)
 }

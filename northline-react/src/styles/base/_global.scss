@@ -1,5 +1,4 @@
 // Общие стили проекта
-
 @use './variables' as *;
 
 :root {
@@ -95,17 +94,4 @@ body {
 .btn-dark:hover {
 	background: $secondary-color;
 	transform: translateY(-1px);
-}
-
-.reveal {
-	transition:
-		opacity 0.8s ease,
-		transform 0.8s ease;
-	transform: translateY(40px);
-	opacity: 0;
-
-	&.in {
-		transform: translateY(0);
-		opacity: 1;
-	}
 }
