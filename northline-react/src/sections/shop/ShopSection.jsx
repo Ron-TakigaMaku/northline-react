@@ -44,63 +44,65 @@ function ShopSection({ products }) {
 
 	return (
 		<section className='shop'>
-			<section className='shop__wrapper'>
-				<div
-					className='shop__track'
-					style={{
-						transform: `translateX(-${idx * 100}%)`,
-					}}
-				>
-					{products.map(product => (
-						<ProductCard
-							key={product.id}
-							product={product}
-							onOpen={setActiveProduct}
-						/>
-					))}
-				</div>
-			</section>
+			<div className='container'>
+				<section className='shop__wrapper'>
+					<div
+						className='shop__track'
+						style={{
+							transform: `translateX(-${idx * 100}%)`,
+						}}
+					>
+						{products.map(product => (
+							<ProductCard
+								key={product.id}
+								product={product}
+								onOpen={setActiveProduct}
+							/>
+						))}
+					</div>
+				</section>
 
-			<section className='shop__nav'>
-				<section className='shop__dots'>
-					{products.map((_, i) => (
+				<section className='shop__nav'>
+					<section className='shop__dots'>
+						{products.map((_, i) => (
+							<button
+								key={i}
+								className={`shop__dot${i === idx ? ' active' : ''}`}
+								aria-label={`Слайд ${i + 1}`}
+								onClick={() => handleDotClick(i)}
+							/>
+						))}
+					</section>
+
+					<div className='shop__counter'>
+						{idx + 1} / {n}
+					</div>
+
+					<section className='shop__btns'>
 						<button
-							key={i}
-							className={`shop__dot${i === idx ? ' active' : ''}`}
-							aria-label={`Слайд ${i + 1}`}
-							onClick={() => handleDotClick(i)}
-						/>
-					))}
+							className='shop__prev'
+							aria-label='Назад'
+							onClick={() => handleNav(-1)}
+						>
+							←
+						</button>
+
+						<button
+							className='shop__next'
+							aria-label='Вперёд'
+							onClick={() => handleNav(1)}
+						>
+							→
+						</button>
+					</section>
 				</section>
 
-				<div className='shop__counter'>
-					{idx + 1} / {n}
-				</div>
-
-				<section className='shop__btns'>
-					<button
-						className='shop__prev'
-						aria-label='Назад'
-						onClick={() => handleNav(-1)}
-					>
-						←
-					</button>
-
-					<button
-						className='shop__next'
-						aria-label='Вперёд'
-						onClick={() => handleNav(1)}
-					>
-						→
-					</button>
-				</section>
-			</section>
-
-			<ProductModal
-				key={activeProduct?.id}
-				product={activeProduct}
-				onClose={() => setActiveProduct(null)}
-			/>
+				<ProductModal
+					key={activeProduct?.id}
+					product={activeProduct}
+					onClose={() => setActiveProduct(null)}
+				/>
+			</div>
 		</section>
 	)
 }

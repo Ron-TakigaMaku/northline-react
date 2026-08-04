@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
+import useReveal from '@/hooks/useReveal'
 import Accessories from '@/pages/Accessories'
 import Bottoms from '@/pages/Bottoms'
 import Fleece from '@/pages/Fleece'
@@ -9,6 +10,7 @@ import Shop from '@/pages/Shop'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
+	useReveal()
 	return (
 		<>
 			<Header />
