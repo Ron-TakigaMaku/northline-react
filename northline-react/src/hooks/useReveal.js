@@ -1,31 +1,41 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 export default function useReveal() {
+	const location = useLocation()
+
 	useEffect(() => {
-		const elements = document.querySelectorAll('.reveal')
-		let revealedCount = 0 // общий счётчик, не сбрасывается между вызовами колбэка
+		const elements = Array.from(document.querySelectorAll('.reveal'))
+
+		elements.forEach(el => {
+			el.classList.remove('in')
+		})
 
 		const observer = new IntersectionObserver(
 			entries => {
-				entries
-					.filter(entry => entry.isIntersecting)
-					.forEach(entry => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
 						const el = entry.target
-						const delay = revealedCount * 120
-						revealedCount++ // увеличиваем на каждый показанный элемент
-
 						setTimeout(() => {
 							el.classList.add('in')
-						}, delay)
-
+						}, 120)
 						observer.unobserve(el)
-					})
+					}
+				})
 			},
 			{ threshold: 0.15 },
 		)
 
-		elements.forEach(el => observer.observe(el))
+		elements.forEach(el => {
+			const rect = el.getBoundingClientRect()
+
+			if (rect.top < window.innerHeight * 0.9) {
+				el.classList.add('in')
+			} else {
+				observer.observe(el)
+			}
+		})
 
 		return () => observer.disconnect()
-	}, [])
+	}, [location.pathname])
 }
