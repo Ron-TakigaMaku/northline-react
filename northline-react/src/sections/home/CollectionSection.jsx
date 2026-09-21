@@ -4,6 +4,14 @@ import { collectionData } from '@/data/home/collection-data'
 function CollectionSection() {
 	const collection = collectionData[0]
 
+	const collectionScroll = e => {
+		e.preventDefault()
+		const target = document.getElementById('values')
+		if (target) {
+			target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		}
+	}
+
 	return (
 		<section className='collection reveal'>
 			<section className='collection__content'>
@@ -13,7 +21,7 @@ function CollectionSection() {
 				<h1 className='collection__title'>{collection.title}</h1>
 				<p className='collection__text'>{collection.description}</p>
 				<section className='collection__actions'>
-					<a href='#' className='btn'>
+					<a href='#' className='btn' onClick={collectionScroll}>
 						Details
 					</a>
 				</section>
