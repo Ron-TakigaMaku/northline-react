@@ -1,8 +1,12 @@
 // src/sections/home/CollectionSection.jsx
-import { collectionData } from '@/data/home/collection-data'
+// import { collectionData } from '@/data/home/collection-data'
 
-function CollectionSection() {
-	const collection = collectionData[0]
+function CollectionSection({ data = [] }) {
+	const collection = data[0]
+
+	if (!collection) {
+		return null
+	}
 
 	const collectionScroll = e => {
 		e.preventDefault()
