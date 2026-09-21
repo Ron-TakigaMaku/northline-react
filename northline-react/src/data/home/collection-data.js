@@ -8,3 +8,5 @@ export const collectionData = [
 		img: sectionImg,
 	},
 ]
+
+export default collectionData

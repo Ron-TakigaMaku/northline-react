@@ -1,6 +1,3 @@
-// src/sections/home/CollectionSection.jsx
-// import { collectionData } from '@/data/home/collection-data'
-
 function CollectionSection({ data = [] }) {
 	const collection = data[0]
 
