@@ -10,31 +10,33 @@ function FeaturedSection({ data = [] }) {
 
 	return (
 		<section className='featured'>
-			<div className='featured__list'>
-				{data.map(featured => (
-					<article key={featured.id} className='featured-card reveal'>
-						<div className='featured-card__content'>
-							<span className='featured-card__number'>{featured.number}</span>
+			<div className='container'>
+				<div className='featured__list'>
+					{data.map(featured => (
+						<article key={featured.id} className='featured-card reveal'>
+							<div className='featured-card__content'>
+								<span className='featured-card__number'>{featured.number}</span>
 
-							<h3 className='featured-card__title'>{featured.title}</h3>
+								<h3 className='featured-card__title'>{featured.title}</h3>
 
-							<p className='featured-card__text'>{featured.text}</p>
+								<p className='featured-card__text'>{featured.text}</p>
 
-							<section className='featured__action'>
-								<button
-									className='featured-card__link'
-									onClick={() => setActiveItem(featured)}
-								>
-									Explore →
-								</button>
-							</section>
-						</div>
+								<section className='featured__action'>
+									<button
+										className='featured-card__link'
+										onClick={() => setActiveItem(featured)}
+									>
+										Explore →
+									</button>
+								</section>
+							</div>
 
-						<div className='featured-card__image'>
-							<img src={featured.img} alt={featured.title} />
-						</div>
-					</article>
-				))}
+							<div className='featured-card__image'>
+								<img src={featured.img} alt={featured.title} />
+							</div>
+						</article>
+					))}
+				</div>
 			</div>
 
 			<FeaturedModal item={activeItem} onClose={() => setActiveItem(null)} />
