@@ -1,7 +1,7 @@
-import Womens_Osito_Jacket from '@/assets/image/fleece/featured/Womens_Osito_Jacket.png'
-import Womens_Osito_Lux_Jacket from '@/assets/image/fleece/featured/Womens_Osito_Lux_Jacket.png'
-import Womens_Plus_Osito_Jacket from '@/assets/image/fleece/featured/Womens_Plus_Osito_Jacket.png'
-import TNF_Pullover from '@/assets/image/fleece/featured/Womens_TNF™_Fleeski_Pullover.png'
+import Womens_Osito_Jacket from '@/assets/image/fleece/featured/Womens_Osito_Jacket.jpg'
+import Womens_Osito_Lux_Jacket from '@/assets/image/fleece/featured/Womens_Osito_Lux_Jacket.jpg'
+import Womens_Plus_Osito_Jacket from '@/assets/image/fleece/featured/Womens_Plus_Osito_Jacket.jpg'
+import TNF_Pullover from '@/assets/image/fleece/featured/Womens_TNF™_Fleeski_Pullover.jpg'
 
 const featuredData = [
 	{

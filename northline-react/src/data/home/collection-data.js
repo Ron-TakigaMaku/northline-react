@@ -1,4 +1,4 @@
-import sectionImg from '@/assets/image/index/collection/section-img.png'
+import sectionImg from '@/assets/image/index/collection/section-img.jpg'
 
 export const collectionData = [
 	{
