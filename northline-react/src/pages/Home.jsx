@@ -1,4 +1,5 @@
 // src/pages/Home.jsx
+import heroData from '@/data/home/hero-data'
 import products from '@/data/shop/products'
 import CollectionSection from '@/sections/home/CollectionSection'
 import HeroSection from '@/sections/home/HeroSection'
@@ -8,7 +9,7 @@ import ShopSection from '@/sections/shop/ShopSection'
 function Home() {
 	return (
 		<>
-			<HeroSection />
+			<HeroSection data={heroData} />
 			<ShopSection products={products} />
 			<CollectionSection />
 			<ValuesSection />

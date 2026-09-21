@@ -1,7 +1,9 @@
-import heroData from '@/data/home/hero-data'
+function HeroSection({ data = [] }) {
+	const hero = data[0]
 
-function HeroSection() {
-	const hero = heroData[0]
+	if (!hero) {
+		return null
+	}
 
 	const handleScroll = e => {
 		e.preventDefault()
