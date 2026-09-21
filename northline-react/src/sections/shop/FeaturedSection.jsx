@@ -1,4 +1,9 @@
+import FeaturedModal from '@/components/shop/FeaturedModal'
+import { useState } from 'react'
+
 function FeaturedSection({ data = [] }) {
+	const [activeItem, setActiveItem] = useState(null)
+
 	if (!data.length) {
 		return null
 	}
@@ -10,10 +15,16 @@ function FeaturedSection({ data = [] }) {
 					<article key={featured.id} className='featured-card reveal'>
 						<div className='featured-card__content'>
 							<span className='featured-card__number'>{featured.number}</span>
+
 							<h3 className='featured-card__title'>{featured.title}</h3>
+
 							<p className='featured-card__text'>{featured.text}</p>
+
 							<section className='featured__action'>
-								<button className='featured-card__link' data-id={featured.id}>
+								<button
+									className='featured-card__link'
+									onClick={() => setActiveItem(featured)}
+								>
 									Explore →
 								</button>
 							</section>
@@ -25,6 +36,8 @@ function FeaturedSection({ data = [] }) {
 					</article>
 				))}
 			</div>
+
+			<FeaturedModal item={activeItem} onClose={() => setActiveItem(null)} />
 		</section>
 	)
 }
