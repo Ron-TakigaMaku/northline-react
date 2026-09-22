@@ -12,7 +12,7 @@ function Home() {
 		<>
 			<HeroSection data={heroData} targetId='story' />
 			<ShopSection products={products} />
-			<CollectionSection data={collectionData} />
+			<CollectionSection data={collectionData} targetId='values' />
 			<ValuesSection />
 		</>
 	)
