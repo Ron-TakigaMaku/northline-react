@@ -3,9 +3,9 @@
 .collection {
 	overflow: hidden;
 	position: relative;
-	height: var(--collection-height);
 	width: 100%;
-	color: $main-black;
+	padding: 30px 0 0 0;
+	animation: fadeDown 0.7s 0.2s ease both;
 	--collection-content-width: 1120px;
 	--collection-height: 55vh;
 	--collection-title-size: 50px;
@@ -16,7 +16,6 @@
 		z-index: 0;
 		height: 100%;
 		width: 100%;
-		animation: fadeDown 0.7s 0.2s ease both;
 		filter: brightness(0.5);
 		inset: 0;
 
@@ -29,13 +28,12 @@
 		}
 	}
 
-	&::after {
-		position: absolute;
-		z-index: 1;
-		background: rgba(0, 0, 0, 0.4);
-		content: '';
-		inset: 0;
-	}
+	// &::after {
+	// 	position: absolute;
+	// 	z-index: 1;
+	// 	content: '';
+	// 	inset: 0;
+	// }
 
 	&__content {
 		align-items: center;
@@ -43,7 +41,8 @@
 		justify-content: center;
 		position: relative;
 		z-index: 2;
-		height: 100%;
+		min-height: 40vh;
+		width: 100%;
 		margin: 0 auto;
 		padding: 80px 16px 60px;
 		text-align: center;
