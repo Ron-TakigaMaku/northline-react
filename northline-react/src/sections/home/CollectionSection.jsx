@@ -1,15 +1,15 @@
 import LazyImage from '@/components/common/LazyImage'
 
-function CollectionSection({ data = [] }) {
-	const collection = data[0]
+function CollectionSection({ data = [], targetId = 'story' }) {
+	const hero = data[0]
 
-	if (!collection) {
+	if (!hero) {
 		return null
 	}
 
-	const collectionScroll = e => {
+	const handleScroll = e => {
 		e.preventDefault()
-		const target = document.getElementById('values')
+		const target = document.getElementById(targetId)
 		if (target) {
 			target.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		}
@@ -19,12 +19,12 @@ function CollectionSection({ data = [] }) {
 		<section className='collection reveal' id='collection'>
 			<section className='collection__content'>
 				<div className='collection__img'>
-					<LazyImage src={collection.img} alt={collection.title} />
+					<LazyImage src={hero.img} alt={hero.title} />
 				</div>
-				<h1 className='collection__title'>{collection.title}</h1>
-				<p className='collection__text'>{collection.description}</p>
+				<h1 className='collection__title'>{hero.title}</h1>
+				<p className='collection__text'>{hero.description}</p>
 				<section className='collection__actions'>
-					<a href='#' className='btn' onClick={collectionScroll}>
+					<a href='#' className='btn' onClick={handleScroll}>
 						Details
 					</a>
 				</section>
