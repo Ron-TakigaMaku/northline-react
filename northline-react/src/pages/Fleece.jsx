@@ -8,7 +8,7 @@ import FeaturedSection from '@/sections/shop/FeaturedSection'
 function Fleece() {
 	return (
 		<>
-			<HeroSection data={heroData} />
+			<HeroSection data={heroData} targetId='featured' />
 			<FeaturedSection data={FeaturedData} />
 			<CollectionSection data={collectionData} />
 		</>

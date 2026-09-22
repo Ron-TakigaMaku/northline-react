@@ -10,7 +10,7 @@ import ShopSection from '@/sections/shop/ShopSection'
 function Home() {
 	return (
 		<>
-			<HeroSection data={heroData} />
+			<HeroSection data={heroData} targetId='story' />
 			<ShopSection products={products} />
 			<CollectionSection data={collectionData} />
 			<ValuesSection />

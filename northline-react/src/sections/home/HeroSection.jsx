@@ -1,6 +1,6 @@
 import LazyImage from '@/components/common/LazyImage'
 
-function HeroSection({ data = [] }) {
+function HeroSection({ data = [], targetId = 'story' }) {
 	const hero = data[0]
 
 	if (!hero) {
@@ -9,7 +9,7 @@ function HeroSection({ data = [] }) {
 
 	const handleScroll = e => {
 		e.preventDefault()
-		const target = document.getElementById('story')
+		const target = document.getElementById(targetId)
 		if (target) {
 			target.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		}

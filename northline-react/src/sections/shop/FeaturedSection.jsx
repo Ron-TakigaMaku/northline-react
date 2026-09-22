@@ -10,7 +10,7 @@ function FeaturedSection({ data = [] }) {
 	}
 
 	return (
-		<section className='featured'>
+		<section id='featured' className='featured'>
 			<div className='container'>
 				<div className='featured__list'>
 					{data.map(featured => (

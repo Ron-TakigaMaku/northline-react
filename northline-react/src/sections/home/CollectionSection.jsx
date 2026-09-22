@@ -16,7 +16,7 @@ function CollectionSection({ data = [] }) {
 	}
 
 	return (
-		<section className='collection reveal'>
+		<section className='collection reveal' id='collection'>
 			<section className='collection__content'>
 				<div className='collection__img'>
 					<LazyImage src={collection.img} alt={collection.title} />
