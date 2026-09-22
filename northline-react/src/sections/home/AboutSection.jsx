@@ -1,3 +1,4 @@
+import LazyImage from '@/components/common/LazyImage'
 import aboutData from '@/data/home/about-data'
 
 function AboutSection() {
@@ -10,7 +11,7 @@ function AboutSection() {
 			{aboutData.map(about => (
 				<article key={about.id} className='product-card'>
 					<div className='product-card__img'>
-						<img src={about.img} alt={about.title} />
+						<LazyImage src={about.img} alt={about.title} />
 					</div>
 					<div className='product-card__info'>
 						<p className='product-card__brand'>{about.brand}</p>

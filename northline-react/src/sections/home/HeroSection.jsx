@@ -1,3 +1,5 @@
+import LazyImage from '@/components/common/LazyImage'
+
 function HeroSection({ data = [] }) {
 	const hero = data[0]
 
@@ -17,7 +19,7 @@ function HeroSection({ data = [] }) {
 		<section className='hero reveal'>
 			<div className='hero__content'>
 				<div className='hero__img'>
-					<img src={hero.img} alt={hero.title} />
+					<LazyImage src={hero.img} alt={hero.title} />
 				</div>
 				<h1 className='hero__title'>{hero.title}</h1>
 				<p className='hero__text'>{hero.description}</p>

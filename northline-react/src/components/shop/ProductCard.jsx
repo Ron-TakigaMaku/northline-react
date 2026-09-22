@@ -1,9 +1,10 @@
-// src/components/shop/ProductCard.jsx
+import LazyImage from '@/components/common/LazyImage'
+
 function ProductCard({ product, onOpen }) {
 	return (
 		<article className='product-card'>
 			<div className='product-card__img'>
-				<img src={product.img} alt={product.title} />
+				<LazyImage src={product.img} alt={product.title} />
 			</div>
 			<div className='product-card__info'>
 				<p className='product-card__brand'>{product.brand}</p>

@@ -1,3 +1,5 @@
+import LazyImage from '@/components/common/LazyImage'
+
 function CollectionSection({ data = [] }) {
 	const collection = data[0]
 
@@ -17,7 +19,7 @@ function CollectionSection({ data = [] }) {
 		<section className='collection reveal'>
 			<section className='collection__content'>
 				<div className='collection__img'>
-					<img src={collection.img} alt={collection.title} />
+					<LazyImage src={collection.img} alt={collection.title} />
 				</div>
 				<h1 className='collection__title'>{collection.title}</h1>
 				<p className='collection__text'>{collection.description}</p>

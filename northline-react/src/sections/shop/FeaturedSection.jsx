@@ -1,3 +1,4 @@
+import LazyImage from '@/components/common/LazyImage'
 import FeaturedModal from '@/components/shop/FeaturedModal'
 import { useState } from 'react'
 
@@ -32,7 +33,7 @@ function FeaturedSection({ data = [] }) {
 							</div>
 
 							<div className='featured-card__image'>
-								<img src={featured.img} alt={featured.title} />
+								<LazyImage src={featured.img} alt={featured.title} />
 							</div>
 						</article>
 					))}
