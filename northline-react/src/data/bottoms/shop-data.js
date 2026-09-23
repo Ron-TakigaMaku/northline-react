@@ -4,7 +4,6 @@ import id1_2 from '@/assets/image/bottoms/shop/id1/2.jpg'
 import id1_3 from '@/assets/image/bottoms/shop/id1/3.jpg'
 import id1_4 from '@/assets/image/bottoms/shop/id1/4.jpg'
 import id1_5 from '@/assets/image/bottoms/shop/id1/5.jpg'
-
 // id2
 import id2_1 from '@/assets/image/bottoms/shop/id2/1.jpg'
 import id2_2 from '@/assets/image/bottoms/shop/id2/2.jpg'
@@ -35,6 +34,7 @@ import id6_2 from '@/assets/image/bottoms/shop/id6/2.jpg'
 import id6_3 from '@/assets/image/bottoms/shop/id6/3.jpg'
 import id6_4 from '@/assets/image/bottoms/shop/id6/4.jpg'
 import id6_5 from '@/assets/image/bottoms/shop/id6/5.jpg'
+
 const shopData = [
 	{
 		id: 1,

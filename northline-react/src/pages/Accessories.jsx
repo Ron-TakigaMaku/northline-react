@@ -1,11 +1,11 @@
 import collectionData from '@/data/accesories/collection-data'
 import featuredData from '@/data/accesories/featured-data'
 import heroData from '@/data/accesories/hero-data'
-// import shopData from '@/data/accesories/shop-data'
+import shopData from '@/data/accesories/shop-data'
 import CollectionSection from '@/sections/home/CollectionSection'
 import HeroSection from '@/sections/home/HeroSection'
 import FeaturedSection from '@/sections/shop/FeaturedSection'
-// import ShopSection from '@/sections/shop/ShopSection'
+import ShopSection from '@/sections/shop/ShopSection'
 
 function Accessories() {
 	return (
@@ -13,7 +13,7 @@ function Accessories() {
 			<HeroSection data={heroData} targetId='collection' />
 			<FeaturedSection data={featuredData} />
 			<CollectionSection data={collectionData} />
-			{/* <ShopSection data={shopData} /> */}
+			<ShopSection products={shopData} />
 		</>
 	)
 }
