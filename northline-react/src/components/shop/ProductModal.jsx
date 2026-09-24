@@ -5,10 +5,6 @@ function ProductModal({ product, onClose }) {
 	const [slideIdx, setSlideIdx] = useState(0)
 
 	useEffect(() => {
-		setSlideIdx(0)
-	}, [product])
-
-	useEffect(() => {
 		if (!product) return
 		document.body.style.overflow = 'hidden'
 		return () => {
