@@ -1,4 +1,7 @@
-import
+import id1_1 from '@/assets/image/footwear/featured/1.jpg'
+import id1_2 from '@/assets/image/footwear/featured/2.jpg'
+import id1_3 from '@/assets/image/footwear/featured/3.jpg'
+import id1_4 from '@/assets/image/footwear/featured/4.jpg'
 
 const featuredData = [
 	{
@@ -8,7 +11,7 @@ const featuredData = [
 		text: 'Maximum support for every mile.',
 		description:
 			'Engineered for long-distance trail running, these shoes feature enhanced stability and superior cushioning to keep you comfortable on any terrain.',
-		img: '../img/footwear/featured/1.png',
+		img: id1_1,
 	},
 	{
 		id: 2,
@@ -17,7 +20,7 @@ const featuredData = [
 		text: 'Elevated style, everyday comfort.',
 		description:
 			'Lightweight and durable, these platform sandals offer a perfect blend of modern aesthetics and functionality for city streets and seaside getaways.',
-		img: '../img/footwear/featured/2.png',
+		img: id1_2,
 	},
 	{
 		id: 3,
@@ -26,7 +29,7 @@ const featuredData = [
 		text: 'Pure comfort for post-workout recovery.',
 		description:
 			'Designed for ultimate relaxation, these cushioned slides provide cloud-like comfort to soothe your feet after a challenging workout.',
-		img: '../img/footwear/featured/3.png',
+		img: id1_3,
 	},
 	{
 		id: 4,
@@ -35,7 +38,7 @@ const featuredData = [
 		text: 'Confidence on every trail.',
 		description:
 			'Versatile performance footwear with exceptional grip and stability, built for those who demand reliability and style on their outdoor adventures.',
-		img: '../img/footwear/featured/4.png',
+		img: id1_4,
 	},
 ]
 export default featuredData

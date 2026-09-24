@@ -1,4 +1,4 @@
-import heroImage from '@/assets/image/footwear/hero/1(20).jpg'
+import heroImage from '@/assets/image/footwear/hero/1.jpg'
 
 const heroData = [
 	{
