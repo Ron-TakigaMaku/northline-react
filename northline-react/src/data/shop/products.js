@@ -1,12 +1,12 @@
-import bitsnbobsTechShell from '@/assets/image/index/track/Bitsnbobs Tech Shell Jacket.png' //id:2
-import bitsnbobsDetails from '@/assets/image/index/track/bitsnbobs-details.png' //id:2 details
-import neversible from '@/assets/image/index/track/neversible.png' //id:6
-import nikeHoodie from '@/assets/image/index/track/nike-hoodie.png' //id:3
-import nikeSupreamDetails from '@/assets/image/index/track/nike-supream-details.png' //id:4 details
-import palaceTrackJacket from '@/assets/image/index/track/Palace x Umbro Track Jacket.png' //id:1
-import palaceDetails from '@/assets/image/index/track/palace-details-1.png' //id:1 details
-import reversible from '@/assets/image/index/track/reversible.png' //id:5
-import sportswear from '@/assets/image/index/track/sportswear.png' //id:4
+import bitsnbobsTechShell from '@/assets/image/index/track/Bitsnbobs Tech Shell Jacket.jpg' //id:2
+import bitsnbobsDetails from '@/assets/image/index/track/bitsnbobs-details.jpg' //id:2 details
+import neversible from '@/assets/image/index/track/neversible.jpg' //id:6
+import nikeHoodie from '@/assets/image/index/track/nike-hoodie.jpg' //id:3
+import nikeSupreamDetails from '@/assets/image/index/track/nike-supream-details.jpg' //id:4 details
+import palaceTrackJacket from '@/assets/image/index/track/Palace x Umbro Track Jacket.jpg' //id:1
+import palaceDetails from '@/assets/image/index/track/palace-details-1.jpg' //id:1 details
+import reversible from '@/assets/image/index/track/reversible.jpg' //id:5
+import sportswear from '@/assets/image/index/track/sportswear.jpg' //id:4
 
 const aboutData = [
 	{
