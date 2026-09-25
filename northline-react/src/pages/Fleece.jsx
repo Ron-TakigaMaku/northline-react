@@ -14,7 +14,7 @@ function Fleece() {
 			<HeroSection data={heroData} targetId='featured' />
 			<FeaturedSection data={FeaturedData} />
 			<CollectionSection data={collectionData} />
-			<ShopSection products={shopData} />
+			<ShopSection products={shopData} category='fleece' />
 		</>
 	)
 }

@@ -1,0 +1,87 @@
+@use '../base/variables' as *;
+
+.product-page {
+	padding: 48px 0 80px;
+
+	&__back {
+		display: inline-block;
+		margin-bottom: 32px;
+		color: $main-black;
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	&__content {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+		gap: 48px;
+	}
+
+	&__gallery {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		background: #f4f4f4;
+		object-fit: cover;
+	}
+
+	&__info {
+		align-self: start;
+		position: sticky;
+		top: 32px;
+	}
+
+	&__brand {
+		margin: 0;
+		color: #777;
+		font-size: 12px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+	}
+
+	&__title {
+		margin: 12px 0 0;
+		font-size: clamp(28px, 4vw, 48px);
+		line-height: 1.05;
+	}
+
+	&__price {
+		margin: 20px 0 0;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	&__description {
+		margin: 24px 0 0;
+		color: #444;
+		font-size: 15px;
+		line-height: 1.7;
+	}
+
+	&__button {
+		margin-top: 28px;
+	}
+}
+
+@media (max-width: 700px) {
+	.product-page {
+		padding-top: 32px;
+
+		&__content {
+			display: block;
+		}
+
+		&__info {
+			margin-top: 32px;
+			position: static;
+		}
+	}
+}

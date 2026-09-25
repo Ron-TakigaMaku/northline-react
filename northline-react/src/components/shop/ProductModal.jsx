@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
-function ProductModal({ product, onClose }) {
+function ProductModal({ product, category, onClose }) {
 	const [slideIdx, setSlideIdx] = useState(0)
 
 	useEffect(() => {
@@ -75,9 +75,9 @@ function ProductModal({ product, onClose }) {
 						<p className='modal__price'>{product.price}</p>
 						<p className='modal__desc'>{product.description}</p>
 						<button
-							className='btn btn--primary'
+							className='modal__btn'
 							onClick={() =>
-								(window.location.href = `/fleece/product/${product.id}`)
+								(window.location.href = `/${category}/product/${product.id}`)
 							}
 						>
 							View Product →

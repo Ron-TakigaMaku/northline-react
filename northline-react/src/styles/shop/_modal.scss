@@ -133,6 +133,29 @@
 	}
 }
 
+.modal__btn {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 14px 36px;
+	color: $main-black;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-decoration: none;
+	background: none;
+	border: none;
+	border-radius: 2px;
+	animation: fadeDown 0.6s ease both;
+	transition:
+		background 0.25s,
+		transform 0.15s;
+	cursor: pointer;
+	&:hover {
+		color: $main-white;
+		background: $secondary-color;
+	}
+}
+
 // --- Info ---
 
 .modal__info {

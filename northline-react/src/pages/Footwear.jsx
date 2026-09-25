@@ -13,7 +13,7 @@ function Footwear() {
 			<HeroSection data={heroData} targetId='featured' />
 			<FeaturedSection data={featuredData} />
 			<CollectionSection data={collectionData} />
-			<ShopSection products={shopData} />
+			<ShopSection products={shopData} category='footwear' />
 		</>
 	)
 }

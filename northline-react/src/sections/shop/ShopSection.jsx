@@ -2,7 +2,7 @@ import ProductCard from '@/components/shop/ProductCard'
 import ProductModal from '@/components/shop/ProductModal'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-function ShopSection({ products }) {
+function ShopSection({ products, category }) {
 	const [idx, setIdx] = useState(0)
 	const [activeProduct, setActiveProduct] = useState(null)
 
@@ -100,6 +100,7 @@ function ShopSection({ products }) {
 				<ProductModal
 					key={activeProduct?.id}
 					product={activeProduct}
+					category={category}
 					onClose={() => setActiveProduct(null)}
 				/>
 			</div>

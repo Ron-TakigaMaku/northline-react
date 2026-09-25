@@ -1,21 +1,59 @@
+import { Link, useParams } from 'react-router-dom'
+
+import accessoriesData from '@/data/accesories/shop-data'
+import bottomsData from '@/data/bottoms/shop-data'
 import fleeceData from '@/data/fleece/shop-data'
-import { useParams } from 'react-router-dom'
+import footwearData from '@/data/footwear/shop-data'
 
 function ProductPage() {
-	const { id } = useParams()
+	const { category, id } = useParams()
 
-	const product = fleeceData.find(item => item.id === Number(id))
+	const productData = {
+		fleece: fleeceData,
+		bottoms: bottomsData,
+		accessories: accessoriesData,
+		footwear: footwearData,
+	}
+
+	const product = productData[category]?.find(item => item.id === Number(id))
 
 	if (!product) {
 		return <p>Product not found</p>
 	}
 
+	const images = product.image ?? [product.img]
+
 	return (
-		<section className='product-page'>
-			<h1>{product.title}</h1>
-			<p>{product.price}</p>
-			<img src={product.image[0]} alt={product.title} />
-		</section>
+		<main className='product-page'>
+			<div className='container'>
+				<Link className='product-page__back' to={`/${category}`}>
+					← Back to shop
+				</Link>
+
+				<div className='product-page__content'>
+					<div className='product-page__gallery'>
+						{images.map((image, index) => (
+							<img
+								key={image}
+								src={image}
+								alt={`${product.title} ${index + 1}`}
+								className='product-page__image'
+							/>
+						))}
+					</div>
+
+					<div className='product-page__info'>
+						<p className='product-page__brand'>{product.brand}</p>
+						<h1 className='product-page__title'>{product.title}</h1>
+						<p className='product-page__price'>{product.price}</p>
+						<p className='product-page__description'>{product.description}</p>
+						<button className='btn product-page__button' type='button'>
+							Add to bag
+						</button>
+					</div>
+				</div>
+			</div>
+		</main>
 	)
 }
 
