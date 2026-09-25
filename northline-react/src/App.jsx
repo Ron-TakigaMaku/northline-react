@@ -6,6 +6,7 @@ import Bottoms from '@/pages/Bottoms'
 import Fleece from '@/pages/Fleece'
 import Footwear from '@/pages/Footwear'
 import Home from '@/pages/Home'
+import ProductPage from '@/sections/shop/ProductPage'
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 				<Route path='/bottoms' element={<Bottoms />} />
 				<Route path='/accessories' element={<Accessories />} />
 				<Route path='/footwear' element={<Footwear />} />
+				<Route path='/:category/product/:id' element={<ProductPage />} />
 			</Routes>
 			<Footer />
 		</>

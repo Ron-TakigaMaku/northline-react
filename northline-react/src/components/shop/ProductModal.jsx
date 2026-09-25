@@ -74,6 +74,14 @@ function ProductModal({ product, onClose }) {
 						<h2 className='modal__title'>{product.title}</h2>
 						<p className='modal__price'>{product.price}</p>
 						<p className='modal__desc'>{product.description}</p>
+						<button
+							className='btn btn--primary'
+							onClick={() =>
+								(window.location.href = `/fleece/product/${product.id}`)
+							}
+						>
+							View Product →
+						</button>
 					</div>
 				</div>
 			</div>
