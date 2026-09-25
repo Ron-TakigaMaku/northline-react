@@ -11,7 +11,7 @@ function Home() {
 	return (
 		<>
 			<HeroSection data={heroData} targetId='story' />
-			<ShopSection products={products} />
+			<ShopSection products={products} category='home' />
 			<CollectionSection data={collectionData} targetId='values' />
 			<ValuesSection />
 		</>

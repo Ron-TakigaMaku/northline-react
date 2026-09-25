@@ -1,9 +1,12 @@
 import navigation from '@/data/layout/navigation-data'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function Header() {
+	const { pathname } = useLocation()
+	const isProductPage = pathname.includes('/product/')
+
 	return (
-		<header className='header'>
+		<header className={`header${isProductPage ? ' header--dark' : ''}`}>
 			<div className='container'>
 				<div className='header__container'>
 					<span className='header__logo'>NORTHLINE</span>

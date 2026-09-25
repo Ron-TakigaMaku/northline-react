@@ -55,4 +55,15 @@
 			transform: scaleX(1);
 		}
 	}
+
+	&--dark {
+		position: relative;
+		padding: 24px 0;
+		background: $main-white;
+
+		.header__logo,
+		.header__link {
+			color: $main-black;
+		}
+	}
 }

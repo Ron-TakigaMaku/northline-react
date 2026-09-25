@@ -4,6 +4,7 @@ import accessoriesData from '@/data/accesories/shop-data'
 import bottomsData from '@/data/bottoms/shop-data'
 import fleeceData from '@/data/fleece/shop-data'
 import footwearData from '@/data/footwear/shop-data'
+import aboutData from '@/data/home/about-data'
 
 function ProductPage() {
 	const { category, id } = useParams()
@@ -13,6 +14,7 @@ function ProductPage() {
 		bottoms: bottomsData,
 		accessories: accessoriesData,
 		footwear: footwearData,
+		home: aboutData,
 	}
 
 	const product = productData[category]?.find(item => item.id === Number(id))
@@ -26,7 +28,10 @@ function ProductPage() {
 	return (
 		<main className='product-page'>
 			<div className='container'>
-				<Link className='product-page__back' to={`/${category}`}>
+				<Link
+					className='product-page__back'
+					to={category === 'home' ? '/' : `/${category}`}
+				>
 					← Back to shop
 				</Link>
 
