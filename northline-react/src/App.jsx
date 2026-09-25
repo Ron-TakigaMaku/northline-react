@@ -6,6 +6,7 @@ import Bottoms from '@/pages/Bottoms'
 import Fleece from '@/pages/Fleece'
 import Footwear from '@/pages/Footwear'
 import Home from '@/pages/Home'
+import ScrollToTopButton from '@/sections/home/ScrollToTopButton'
 import ProductPage from '@/sections/shop/ProductPage'
 import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
@@ -43,6 +44,7 @@ function App() {
 				<Route path='/:category/product/:id' element={<ProductPage />} />
 			</Routes>
 			<Footer />
+			<ScrollToTopButton />
 		</>
 	)
 }
