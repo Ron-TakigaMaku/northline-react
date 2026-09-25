@@ -7,10 +7,30 @@ import Fleece from '@/pages/Fleece'
 import Footwear from '@/pages/Footwear'
 import Home from '@/pages/Home'
 import ProductPage from '@/sections/shop/ProductPage'
-import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 function App() {
 	useReveal()
+	const location = useLocation()
+
+	useEffect(() => {
+		const frame = requestAnimationFrame(() => {
+			const targetId = location.hash.slice(1)
+
+			if (targetId) {
+				document.getElementById(targetId)?.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				})
+			} else {
+				window.scrollTo({ top: 0, behavior: 'auto' })
+			}
+		})
+
+		return () => cancelAnimationFrame(frame)
+	}, [location.pathname, location.hash])
+
 	return (
 		<>
 			<Header />

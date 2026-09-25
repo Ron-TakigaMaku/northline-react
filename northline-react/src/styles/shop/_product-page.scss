@@ -59,6 +59,18 @@
 		font-weight: 700;
 	}
 
+	&__color {
+		margin: 10px 0 0;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	&__sizes {
+		margin: 10px 0 0;
+		font-size: 18px;
+		font-weight: 700;
+	}
+
 	&__description {
 		margin: 24px 0 0;
 		color: #444;
@@ -67,7 +79,26 @@
 	}
 
 	&__button {
-		margin-top: 28px;
+		display: inline-block;
+		margin-top: 20px;
+		padding: 14px 36px;
+		color: $main-black;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 1.5px;
+		text-decoration: none;
+		background: none;
+		border: none;
+		border-radius: 2px;
+		animation: fadeDown 0.6s ease both;
+		transition:
+			background 0.25s,
+			transform 0.15s;
+		cursor: pointer;
+		&:hover {
+			color: $main-white;
+			background: $secondary-color;
+		}
 	}
 }
 

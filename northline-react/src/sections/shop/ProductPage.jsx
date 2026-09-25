@@ -30,7 +30,7 @@ function ProductPage() {
 			<div className='container'>
 				<Link
 					className='product-page__back'
-					to={category === 'home' ? '/' : `/${category}`}
+					to={category === 'home' ? '/#story' : `/${category}#story`}
 				>
 					← Back to shop
 				</Link>
