@@ -28,8 +28,8 @@
 	&__image {
 		display: block;
 		width: 100%;
-		aspect-ratio: 4 / 5;
 		background: #f4f4f4;
+		aspect-ratio: 4 / 5;
 		object-fit: cover;
 	}
 
@@ -80,8 +80,8 @@
 		}
 
 		&__info {
-			margin-top: 32px;
 			position: static;
+			margin-top: 32px;
 		}
 	}
 }

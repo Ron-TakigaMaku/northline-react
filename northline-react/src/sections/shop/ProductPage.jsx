@@ -52,9 +52,23 @@ function ProductPage() {
 						<h1 className='product-page__title'>{product.title}</h1>
 						<p className='product-page__price'>{product.price}</p>
 						<p className='product-page__description'>{product.description}</p>
+						<p className='product-page__color'>Color: {product.color}</p>
+						<p className='product-page__sizes'>
+							Sizes: {product.sizes.join(', ')}
+						</p>
 						<button className='btn product-page__button' type='button'>
 							Add to bag
 						</button>
+					</div>
+					<div className='product__details'>
+						<h2>Product Details</h2>
+						<ul>
+							{product.details.map((detail, index) => (
+								<li key={index}>
+									<strong>{detail.label}:</strong> {detail.value}
+								</li>
+							))}
+						</ul>
 					</div>
 				</div>
 			</div>
