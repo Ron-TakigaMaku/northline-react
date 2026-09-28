@@ -28,7 +28,7 @@
 		max-width: 1300px;
 		padding: 40px;
 		box-sizing: border-box;
-		background: #fff;
+		background: var(--surface);
 		gap: 40px;
 	}
 
@@ -129,7 +129,7 @@
 	&__link {
 		display: inline-block;
 		padding: 14px 36px;
-		color: #000;
+		color: var(--page-text);
 		font-size: 12px;
 		font-weight: 700;
 		letter-spacing: 1.5px;

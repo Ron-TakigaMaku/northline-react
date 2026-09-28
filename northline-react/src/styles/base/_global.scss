@@ -2,6 +2,12 @@
 @use './variables' as *;
 
 :root {
+	color-scheme: light;
+	--page-background: #fff;
+	--page-text: #111;
+	--surface: #fff;
+	--muted-text: #777;
+	--surface-border: #ddd;
 	--main-black: #{$main-black};
 	--main-white: #{$main-white};
 	--main-gray: #{$main-gray};
@@ -11,16 +17,28 @@
 	--container: #{$container};
 }
 
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--page-background: #111;
+	--page-text: #f2f0ed;
+	--surface: #1d1d1b;
+	--muted-text: #aaa7a2;
+	--surface-border: #41413e;
+}
+
 html {
 	scroll-behavior: smooth;
 }
 
 body {
 	overflow-x: hidden;
-	color: $main-black;
+	color: var(--page-text);
 	font-family: $font-main;
-	background: $main-white;
+	background: var(--page-background);
 	background-image: none;
+	transition:
+		background-color 0.25s ease,
+		color 0.25s ease;
 }
 
 .container {
