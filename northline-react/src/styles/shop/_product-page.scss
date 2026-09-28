@@ -102,6 +102,53 @@
 	}
 }
 
+.product-page {
+	&__image-button {
+		display: block;
+		width: 100%;
+		padding: 0;
+		background: none;
+		border: none;
+		cursor: zoom-in;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		cursor: zoom-in;
+	}
+}
+
+.product-lightbox {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	z-index: 2000;
+	padding: 40px;
+	background: rgba(0, 0, 0, 0.9);
+	inset: 0;
+
+	&__image {
+		max-height: 90vh;
+		max-width: 95vw;
+		object-fit: contain;
+	}
+
+	&__close {
+		position: absolute;
+		right: 25px;
+		top: 20px;
+		z-index: 1;
+		padding: 5px;
+		color: #fff;
+		font-size: 28px;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+}
+
 @media (max-width: 700px) {
 	.product-page {
 		padding-top: 32px;
