@@ -7,7 +7,7 @@ import fleeceData from '@/data/fleece/shop-data'
 import footwearData from '@/data/footwear/shop-data'
 import aboutData from '@/data/home/about-data'
 
-function ProductPage() {
+function ProductPage({ onAddToCart = () => {} }) {
 	const { category, id } = useParams()
 
 	const productData = {
@@ -99,7 +99,11 @@ function ProductPage() {
 							</p>
 						)}
 
-						<button className='btn product-page__button' type='button'>
+						<button
+							className='btn product-page__button'
+							type='button'
+							onClick={() => onAddToCart({ ...product, category })}
+						>
 							Add to bag
 						</button>
 					</div>

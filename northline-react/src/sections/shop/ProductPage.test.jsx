@@ -28,4 +28,29 @@ describe('ProductPage', () => {
 		fireEvent.keyDown(window, { key: 'Escape' })
 		expect(document.body.style.overflow).toBe('')
 	})
+
+	it('calls addToCart when the Add to bag button is clicked', () => {
+		const addToCart = vi.fn()
+
+		render(
+			<MemoryRouter initialEntries={['/fleece/product/1']}>
+				<Routes>
+					<Route
+						path='/:category/product/:id'
+						element={<ProductPage onAddToCart={addToCart} />}
+					/>
+				</Routes>
+			</MemoryRouter>,
+		)
+
+		fireEvent.click(screen.getByRole('button', { name: /add to bag/i }))
+
+		expect(addToCart).toHaveBeenCalledTimes(1)
+		expect(addToCart).toHaveBeenCalledWith(
+			expect.objectContaining({
+				id: 1,
+				title: 'Colorblock Fleece Jacket',
+			}),
+		)
+	})
 })

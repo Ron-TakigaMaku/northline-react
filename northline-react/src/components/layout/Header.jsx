@@ -2,7 +2,7 @@ import navigation from '@/data/layout/navigation-data'
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-function Header() {
+function Header({ cartCount = 0 }) {
 	const { pathname } = useLocation()
 	const isProductPage = pathname.includes('/product/')
 	const [isDark, setIsDark] = useState(() => {
@@ -34,6 +34,9 @@ function Header() {
 							))}
 						</ul>
 					</nav>
+					<Link to='/cart' className='header__cart' aria-label='Open cart'>
+						Bag {cartCount > 0 ? `(${cartCount})` : ''}
+					</Link>
 					<button
 						className='header__theme-toggle'
 						type='button'
