@@ -35,7 +35,24 @@ function Header({ cartCount = 0 }) {
 						</ul>
 					</nav>
 					<Link to='/cart' className='header__cart' aria-label='Open cart'>
-						Bag {cartCount > 0 ? `(${cartCount})` : ''}
+						<svg
+							className='header__cart-icon'
+							width='20'
+							height='20'
+							viewBox='0 0 24 24'
+							fill='none'
+							stroke='currentColor'
+							strokeWidth='1.5'
+							strokeLinecap='round'
+							strokeLinejoin='round'
+							aria-hidden='true'
+						>
+							<path d='M6 7h12l1 13H5L6 7z' />
+							<path d='M9 7V6a3 3 0 0 1 6 0v1' />
+						</svg>
+						<span className='header__cart-text'>
+							{cartCount > 0 ? `(${cartCount})` : ''}
+						</span>
 					</Link>
 					<button
 						className='header__theme-toggle'

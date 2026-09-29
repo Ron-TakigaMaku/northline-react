@@ -29,6 +29,16 @@
 		text-transform: uppercase;
 	}
 
+	&__cart {
+		align-items: center;
+		display: inline-flex;
+		gap: 0.5rem;
+	}
+
+	&__cart-icon {
+		flex-shrink: 0;
+	}
+
 	&__list {
 		display: flex;
 		gap: 34px;
