@@ -19,6 +19,8 @@ const formatPrice = price =>
 		currency: 'USD',
 	}).format(price)
 
+const CART_STORAGE_KEY = 'northline-cart'
+
 function CartPage({ cart, onChangeQuantity, onRemoveFromCart, onClearCart }) {
 	const [checkoutMessage, setCheckoutMessage] = useState('')
 	const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
@@ -167,7 +169,14 @@ function App() {
 	useReveal()
 	const location = useLocation()
 
-	const [cart, setCart] = useState([])
+	const [cart, setCart] = useState(() => {
+		try {
+			const storedCart = window.localStorage.getItem(CART_STORAGE_KEY)
+			return storedCart ? JSON.parse(storedCart) : []
+		} catch {
+			return []
+		}
+	})
 
 	const addToCart = product => {
 		setCart(prevCart => {
@@ -206,6 +215,10 @@ function App() {
 	}
 
 	const clearCart = () => setCart([])
+
+	useEffect(() => {
+		window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart))
+	}, [cart])
 
 	useEffect(() => {
 		const frame = requestAnimationFrame(() => {
