@@ -102,3 +102,39 @@
 		}
 	}
 }
+
+@media (max-width: 700px) {
+	.header {
+		padding: 14px 0;
+
+		&__container {
+			flex-wrap: wrap;
+			gap: 12px;
+		}
+
+		&__logo {
+			font-size: 18px;
+		}
+
+		&__nav {
+			order: 3;
+			width: 100%;
+		}
+
+		&__list {
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 8px 16px;
+		}
+
+		&__link {
+			font-size: 11px;
+		}
+
+		&__theme-toggle {
+			height: 36px;
+			width: 36px;
+			font-size: 19px;
+		}
+	}
+}

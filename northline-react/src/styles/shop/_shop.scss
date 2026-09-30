@@ -25,16 +25,30 @@
 	}
 
 	&__dot {
-		height: 6px;
-		width: 6px;
+		align-items: center;
+		display: inline-flex;
+		height: 24px;
+		width: 24px;
 		padding: 0;
-		background: #ccc;
+		background: transparent;
 		border: none;
 		border-radius: 50%;
 		cursor: pointer;
+		justify-content: center;
+
+		&::before {
+			display: block;
+			height: 6px;
+			width: 6px;
+			background: #ccc;
+			border-radius: 50%;
+			content: '';
+		}
 
 		&.active {
-			background: $main-black;
+			&::before {
+				background: $main-black;
+			}
 		}
 	}
 
