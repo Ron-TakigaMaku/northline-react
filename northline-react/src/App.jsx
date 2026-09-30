@@ -20,6 +20,8 @@ const formatPrice = price =>
 	}).format(price)
 
 const CART_STORAGE_KEY = 'northline-cart'
+const DISCOUNT_THRESHOLD = 200
+const DISCOUNT_RATE = 0.1
 
 function CartPage({ cart, onChangeQuantity, onRemoveFromCart, onClearCart }) {
 	const [checkoutMessage, setCheckoutMessage] = useState('')
@@ -28,6 +30,8 @@ function CartPage({ cart, onChangeQuantity, onRemoveFromCart, onClearCart }) {
 		(sum, item) => sum + parsePrice(item.price) * item.quantity,
 		0,
 	)
+	const discount = subtotal >= DISCOUNT_THRESHOLD ? subtotal * DISCOUNT_RATE : 0
+	const total = subtotal - discount
 
 	if (cart.length === 0) {
 		return (
@@ -134,12 +138,20 @@ function CartPage({ cart, onChangeQuantity, onRemoveFromCart, onClearCart }) {
 							<span>Shipping</span>
 							<span>Free</span>
 						</div>
+						{discount > 0 && (
+							<div className='cart-summary__row cart-summary__discount'>
+								<span>Discount (10%)</span>
+								<span>-{formatPrice(discount)}</span>
+							</div>
+						)}
 						<p className='cart-summary__note'>
-							Taxes and duties are calculated at checkout.
+							{discount > 0
+								? 'Your 10% discount has been applied.'
+								: `Add ${formatPrice(DISCOUNT_THRESHOLD - subtotal)} more to unlock 10% off.`}
 						</p>
 						<div className='cart-summary__total'>
 							<span>Total</span>
-							<strong>{formatPrice(subtotal)}</strong>
+							<strong>{formatPrice(total)}</strong>
 						</div>
 						<button
 							className='btn cart-summary__checkout'
