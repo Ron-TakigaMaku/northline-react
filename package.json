@@ -1,6 +1,13 @@
 {
-  "dependencies": {
-    "react-router-dom": "^7.18.1",
-    "sass": "^1.102.0"
-  }
+	"name": "northline-react-root",
+	"private": true,
+	"scripts": {
+		"dev": "npm --prefix northline-react run dev",
+		"build": "npm --prefix northline-react run build",
+		"lint": "npm --prefix northline-react run lint",
+		"preview": "npm --prefix northline-react run preview",
+		"test": "npm --prefix northline-react run test",
+		"test:run": "npm --prefix northline-react run test:run",
+		"test:coverage": "npm --prefix northline-react run test:coverage"
+	}
 }
