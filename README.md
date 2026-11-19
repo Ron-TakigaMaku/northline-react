@@ -16,6 +16,7 @@ The current application uses client-side routing:
 /bottoms      → Bottoms
 /accessories  → Accessories
 /footwear     → Footwear
+/cart         → Shopping bag
 ```
 
 The main category pages share the same general structure and reuse common React sections while receiving page-specific data.
@@ -24,20 +25,22 @@ The main category pages share the same general structure and reuse common React 
 
 ## Tech Stack
 
-| Layer | Technology |
-| --- | --- |
-| UI | React |
-| Build tool | Vite |
-| Routing | React Router |
-| Styles | SCSS / BEM |
-| Language | JavaScript / JSX |
-| State | React `useState` |
-| Side effects | React `useEffect` |
-| DOM references | React `useRef` |
-| Portals | React `createPortal` |
-| Image handling | Vite asset imports |
-| Fonts | Anton + Montserrat |
-| Code quality | ESLint |
+| Layer          | Technology                                 |
+| -------------- | ------------------------------------------ |
+| UI             | React                                      |
+| Build tool     | Vite                                       |
+| Routing        | React Router                               |
+| Styles         | SCSS / BEM                                 |
+| Language       | JavaScript / JSX                           |
+| State          | React `useState`                           |
+| Side effects   | React `useEffect`                          |
+| DOM references | React `useRef`                             |
+| Portals        | React `createPortal`                       |
+| Image handling | Vite asset imports                         |
+| Lazy images    | Native loading with `IntersectionObserver` |
+| Fonts          | Anton + Montserrat                         |
+| Code quality   | ESLint                                     |
+| Testing        | Vitest + React Testing Library             |
 
 The project uses Vite as the development server and build tool. SCSS is processed by Vite rather than by a separate Live Sass Compiler workflow.
 
@@ -168,12 +171,15 @@ northline-react/
     │   │   ├── HeroSection.jsx
     │   │   ├── AboutSection.jsx
     │   │   ├── CollectionSection.jsx
-    │   │   └── ValuesSection.jsx
+    │   │   ├── ValuesSection.jsx
+    │   │   └── ScrollToTopButton.jsx
     │   │
     │   └── shop/
     │       ├── HeroSection.jsx
     │       ├── FeaturedSection.jsx
-    │       └── ShopSection.jsx
+    │       ├── ShopSection.jsx
+    │       ├── ProductPage.jsx
+    │       └── ProductPage.test.jsx
     │
     └── styles/
         ├── base/
@@ -189,14 +195,17 @@ northline-react/
         │
         ├── layout/
         │   ├── _header.scss
-        │   └── _footer.scss
+        │   ├── _footer.scss
+        │   └── _scroll-top.scss
         │
         ├── shop/
         │   ├── _hero.scss
         │   ├── _featured.scss
         │   ├── _shop.scss
         │   ├── _modal.scss
-        │   └── _product-card.scss
+        │   ├── _product-card.scss
+        │   ├── _product-page.scss
+        │   └── _cart.scss
         │
         └── main.scss
 ```
@@ -303,6 +312,10 @@ The corresponding page component is rendered
 
 The shared `Header` and `Footer` are rendered outside `Routes`, so they remain available across the application.
 
+The route pattern `/:category/product/:id` resolves products from the corresponding category data module. `/cart` renders the shopping bag and persists its state in `localStorage`.
+
+Route changes also update the scroll position: hash links scroll to the matching section, while regular page navigation returns to the top.
+
 ---
 
 ## Pages
@@ -311,13 +324,13 @@ The shared `Header` and `Footer` are rendered outside `Routes`, so they remain a
 
 The Home page contains:
 
-| Section | Description |
-| --- | --- |
-| **Hero** | Main editorial introduction |
-| **About / Shop** | Product-focused section with navigation and product modal |
-| **Collection** | Seasonal collection banner |
-| **Values** | Numbered brand values / principles |
-| **Header / Footer** | Shared site layout |
+| Section             | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+| **Hero**            | Main editorial introduction                               |
+| **About / Shop**    | Product-focused section with navigation and product modal |
+| **Collection**      | Seasonal collection banner                                |
+| **Values**          | Numbered brand values / principles                        |
+| **Header / Footer** | Shared site layout                                        |
 
 ### Category Pages
 
@@ -330,14 +343,39 @@ The category pages are:
 
 Their structure is based around reusable sections:
 
-| Section | Description |
-| --- | --- |
-| **Hero** | Category-specific editorial introduction |
-| **Featured** | Numbered editorial cards with modal details |
-| **Collection** | Category-specific seasonal collection banner |
-| **Shop** | Product cards, navigation, and product details |
+| Section        | Description                                    |
+| -------------- | ---------------------------------------------- |
+| **Hero**       | Category-specific editorial introduction       |
+| **Featured**   | Numbered editorial cards with modal details    |
+| **Collection** | Category-specific seasonal collection banner   |
+| **Shop**       | Product cards, navigation, and product details |
 
 The content changes through page-specific data files rather than duplicated section implementations.
+
+### Product Page
+
+Each product can open at `/:category/product/:id`.
+
+The Product Page provides:
+
+- a responsive image gallery
+- a full-size image lightbox
+- color and size selection
+- size-required add-to-bag behavior
+- product specifications and descriptions
+- a link back to the category or Home page
+
+### Shopping Bag
+
+The `/cart` page provides a client-side shopping bag with:
+
+- item quantity controls
+- item removal and clear-bag actions
+- subtotal, shipping, discount, and total calculations
+- a 10% discount when the subtotal reaches $200
+- `localStorage` persistence
+- a cart item count in the shared header
+- a checkout placeholder for future payment integration
 
 ---
 
@@ -364,10 +402,7 @@ onClick={() => setActiveItem(featured)}
 The modal receives the selected object as a prop:
 
 ```jsx
-<FeaturedModal
-	item={activeItem}
-	onClose={() => setActiveItem(null)}
-/>
+<FeaturedModal item={activeItem} onClose={() => setActiveItem(null)} />
 ```
 
 ### Product Modal
@@ -382,6 +417,12 @@ It uses React state to control the currently visible image and effects for:
 
 The modal is rendered through `createPortal` so that it is mounted directly into `document.body`.
 
+### Product Image Lightbox
+
+Product gallery images open in a fixed lightbox on the Product Page.
+
+The lightbox closes when the close button is clicked, the backdrop is clicked, or the `Escape` key is pressed. Opening the lightbox locks page scrolling and restores scrolling when it closes.
+
 ---
 
 ## Scroll Reveal
@@ -395,6 +436,18 @@ src/hooks/useReveal.js
 The hook uses `IntersectionObserver` to detect when elements enter the viewport and applies the reveal state.
 
 This replaces the DOM-based scroll-reveal implementation used in the original Vanilla JavaScript version.
+
+Images that are below the fold use `LazyImage.jsx`, which loads them only as they approach the viewport and falls back to a normal image when `IntersectionObserver` is unavailable.
+
+---
+
+## Theme and Accessibility
+
+The header includes a persistent light/dark theme toggle.
+
+The initial theme comes from `localStorage`, or from the user's system preference when no saved choice exists. The selected theme is written to `document.documentElement.dataset.theme`.
+
+Product and cart controls include semantic labels, pressed states, keyboard support, and disabled states where an action is not currently valid.
 
 ---
 
@@ -463,6 +516,16 @@ This is configured in `vite.config.js`.
 
 **Scroll reveal** — `IntersectionObserver` is encapsulated in a reusable React hook.
 
+**Lazy product imagery** — `LazyImage` loads images as they enter the viewport.
+
+**Product detail pages** — category products open on dedicated routes with galleries, options, specifications, and add-to-bag actions.
+
+**Shopping bag** — cart state, quantity controls, totals, discounts, and persistence are implemented with React state and `localStorage`.
+
+**Light/dark theme** — the shared header stores and restores the user's theme preference.
+
+**Automated component tests** — product-page behavior is covered with Vitest and React Testing Library.
+
 **BEM + SCSS** — styling remains structured around the existing BEM naming system from the original project.
 
 ---
@@ -496,6 +559,26 @@ npm run build
 ```bash
 npm run preview
 ```
+
+### 5. Run tests
+
+```bash
+npm run test:run
+```
+
+For watch mode:
+
+```bash
+npm test
+```
+
+To generate a coverage report:
+
+```bash
+npm run test:coverage
+```
+
+These root scripts run the corresponding commands from the `northline-react` package.
 
 ---
 
@@ -549,16 +632,16 @@ React render
 
 Examples of the migration include:
 
-| Original Vanilla JS | React |
-| --- | --- |
-| `innerHTML` | JSX rendering |
-| `querySelector()` | Component structure / refs when needed |
-| `data-id` + `find()` | Passing the selected object directly |
-| Manual DOM events | JSX event handlers |
-| Global mutable variables | `useState` / `useRef` |
-| DOM cleanup | `useEffect` cleanup |
-| HTML-string modals | React modal components |
-| Page-specific DOM modules | Page + section composition |
+| Original Vanilla JS       | React                                  |
+| ------------------------- | -------------------------------------- |
+| `innerHTML`               | JSX rendering                          |
+| `querySelector()`         | Component structure / refs when needed |
+| `data-id` + `find()`      | Passing the selected object directly   |
+| Manual DOM events         | JSX event handlers                     |
+| Global mutable variables  | `useState` / `useRef`                  |
+| DOM cleanup               | `useEffect` cleanup                    |
+| HTML-string modals        | React modal components                 |
+| Page-specific DOM modules | Page + section composition             |
 
 The goal of the migration is not only to reproduce the original design, but also to make the project easier to extend and maintain.
 
@@ -582,9 +665,11 @@ The visual identity combines technical outdoor references with modern streetwear
 
 ## Status
 
-The React migration is in active development.
+The React migration is functionally implemented.
 
-The main application structure, routing, Home page, shared layout, category-page architecture, data modules, featured sections, product sections, and modal patterns are implemented. Additional category pages and UI refinements can continue to be developed within the existing architecture.
+Home and category pages, shared layout, routing, data modules, featured and product sections, product detail routes, the shopping bag, light/dark themes, lazy imagery, scroll reveal, modal patterns, and component tests are included.
+
+Checkout is currently a frontend placeholder. Payment, order management, and backend integration can continue to be developed within the existing application structure.
 
 ---
 
