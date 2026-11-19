@@ -22,6 +22,14 @@ function ProductPage({ onAddToCart = () => {} }) {
 
 	const [activeImage, setActiveImage] = useState(null)
 
+	const [selection, setSelection] = useState(null)
+	const defaultColor = Array.isArray(product?.color)
+		? (product.color[0] ?? '')
+		: (product?.color ?? '')
+	const selectedColor =
+		selection?.product === product ? selection.color : defaultColor
+	const selectedSize = selection?.product === product ? selection.size : ''
+
 	useEffect(() => {
 		const handleKeyDown = e => {
 			if (e.key === 'Escape') {
@@ -51,6 +59,11 @@ function ProductPage({ onAddToCart = () => {} }) {
 	}
 
 	const images = product.image ?? [product.img]
+	const colors = Array.isArray(product.color)
+		? product.color
+		: product.color
+			? [product.color]
+			: []
 
 	return (
 		<main className='product-page'>
@@ -89,20 +102,72 @@ function ProductPage({ onAddToCart = () => {} }) {
 
 						<p className='product-page__description'>{product.description}</p>
 
-						{product.color && (
-							<p className='product-page__color'>Color: {product.color}</p>
+						{colors.length > 0 && (
+							<div className='product-page__options'>
+								<p id='product-page-color-label'>
+									Color: {selectedColor}
+								</p>
+								<div
+									className='product-page__choices'
+									role='group'
+									aria-labelledby='product-page-color-label'
+								>
+									{colors.map(color => (
+										<button
+											key={color}
+											type='button'
+											className={`product-page__choice${selectedColor === color ? ' is-selected' : ''}`}
+											aria-pressed={selectedColor === color}
+											onClick={() =>
+												setSelection({ product, color, size: selectedSize })
+											}
+										>
+											{color}
+										</button>
+									))}
+								</div>
+							</div>
 						)}
 
 						{product.sizes?.length > 0 && (
-							<p className='product-page__sizes'>
-								Sizes: {product.sizes.join(', ')}
-							</p>
+							<div className='product-page__options'>
+								<p id='product-page-size-label'>
+									Size: {selectedSize || 'Choose a size'}
+								</p>
+								<div
+									className='product-page__choices'
+									role='group'
+									aria-labelledby='product-page-size-label'
+								>
+									{product.sizes.map(size => (
+										<button
+											key={size}
+											type='button'
+											className={`product-page__choice${selectedSize === size ? ' is-selected' : ''}`}
+											aria-pressed={selectedSize === size}
+											onClick={() =>
+												setSelection({ product, color: selectedColor, size })
+											}
+										>
+											{size}
+										</button>
+									))}
+								</div>
+							</div>
 						)}
 
 						<button
 							className='btn product-page__button'
 							type='button'
-							onClick={() => onAddToCart({ ...product, category })}
+							disabled={Boolean(product.sizes?.length) && !selectedSize}
+							onClick={() =>
+								onAddToCart({
+									...product,
+									category,
+									selectedColor,
+									selectedSize,
+								})
+							}
 						>
 							Add to bag
 						</button>

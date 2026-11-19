@@ -29,7 +29,7 @@ describe('ProductPage', () => {
 		expect(document.body.style.overflow).toBe('')
 	})
 
-	it('calls addToCart when the Add to bag button is clicked', () => {
+	it('requires a size and adds the selected color and size to the bag', () => {
 		const addToCart = vi.fn()
 
 		render(
@@ -43,14 +43,40 @@ describe('ProductPage', () => {
 			</MemoryRouter>,
 		)
 
-		fireEvent.click(screen.getByRole('button', { name: /add to bag/i }))
+		const addToBagButton = screen.getByRole('button', { name: /add to bag/i })
+		expect(addToBagButton).toBeDisabled()
+
+		fireEvent.click(screen.getByRole('button', { name: 'M' }))
+		expect(addToBagButton).toBeEnabled()
+		fireEvent.click(addToBagButton)
 
 		expect(addToCart).toHaveBeenCalledTimes(1)
 		expect(addToCart).toHaveBeenCalledWith(
 			expect.objectContaining({
 				id: 1,
 				title: 'Colorblock Fleece Jacket',
+				selectedColor: 'Black',
+				selectedSize: 'M',
 			}),
 		)
+	})
+
+	it('allows choosing between multiple colors', () => {
+		render(
+			<MemoryRouter initialEntries={['/footwear/product/1']}>
+				<Routes>
+					<Route path='/:category/product/:id' element={<ProductPage />} />
+				</Routes>
+			</MemoryRouter>,
+		)
+
+		const blackButton = screen.getByRole('button', { name: 'Black' })
+		const blueButton = screen.getByRole('button', { name: 'Blue' })
+
+		expect(blackButton).toHaveAttribute('aria-pressed', 'true')
+		fireEvent.click(blueButton)
+
+		expect(blackButton).toHaveAttribute('aria-pressed', 'false')
+		expect(blueButton).toHaveAttribute('aria-pressed', 'true')
 	})
 })

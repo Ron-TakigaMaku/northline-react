@@ -9,18 +9,6 @@ import reversible from '@/assets/image/index/track/reversible.jpg' //id:5
 import sportswear from '@/assets/image/index/track/sportswear.jpg' //id:4
 
 const aboutData = [
-	// {
-	// 	id: 1,
-	// 	brand: 'Palace x Umbro',
-	// 	title: 'Track Jacket',
-	// 	price: '$720',
-	// 	description:
-	// 		'A retro-inspired windbreaker born from the collaboration between skate giant Palace and heritage sportswear brand Umbro. Featuring a crisp white nylon shell, this jacket is detailed with contrast piping, light grey side panelling, and a classic stand-up collar. Completed with co-branded embroidery on the chest, capturing a perfect 90s football terrace aesthetic.',
-	// 	img: palaceTrackJacket,
-	// 	image: [palaceTrackJacket, palaceDetails],
-	// 	linkText: 'More information ↗',
-	// 	linkUrl: '#',
-	// },
 	{
 		id: 1,
 		brand: 'Palace x Umbro',
